@@ -1,13 +1,19 @@
 .home {
-
     // height: 100vh;
     max-width: 900px;
-    margin:auto;
+    margin: auto;
     font-size: 30px;
     // color: red;
     padding: 10px;
     .search {
         margin: 20px 0;
-        width: 200px;
+        display: flex;
+        align-items: center;
+        .el-input {
+            width: 200px;
+        }
+        .el-button {
+            margin-left: 20px;
+        }
     }
 }
