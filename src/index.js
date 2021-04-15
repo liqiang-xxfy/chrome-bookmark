@@ -5,12 +5,13 @@ import Router from './router';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-    <React.StrictMode>
+    // <React.StrictMode>
         <div>
             <Router />
             {/*process.env.NODE_ENV === 'production'?'':<DevTools/>*/}
         </div>
-    </React.StrictMode>,
+    // </React.StrictMode>
+    ,
     document.getElementById('root')
 );
 
