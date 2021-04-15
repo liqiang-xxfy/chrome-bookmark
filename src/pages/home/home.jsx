@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './home.scss';
 import { Tree, Input } from 'element-react';
 import 'element-theme-default';
-import json from '@/assets/chrome-bookmark.json';
+import json from '@/../public/chrome-bookmark.json';
 
 export default class home extends Component {
     constructor(props) {
