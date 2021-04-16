@@ -52,6 +52,8 @@ export default class home extends Component {
             getUrl = 'https://api.github.com/repos/liqiang-xxfy/chrome-bookmark/contents/docs/chrome-bookmark.json?ref=master';
             console.log('localUrl:', getUrl);
         }
+        getUrl = getUrl + '&&time=' + new Date().getTime();
+        // axios.defaults.headers['Cache-Control'] = 'no-store';
         axios
             .get(getUrl)
             // .get('@/../public/chrome-bookmark.json')
