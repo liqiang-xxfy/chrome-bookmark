@@ -17,7 +17,7 @@ export default class home extends Component {
         };
     }
     componentDidMount() {
-        this.getLocalData();
+        this.getUrlData();
     }
     openUrl = params => {
         if (!params.url) return;
@@ -78,7 +78,7 @@ export default class home extends Component {
             <div className="home">
                 <div className="search">
                     <Input placeholder="输入关键字进行过滤" onChange={text => this.tree.filter(text)} />
-                    <Button onClick={this.getLocalData}>更新</Button>
+                    <Button onClick={this.getUrlData}>更新</Button>
                     <Button onClick={this.delete}>删除</Button>
                 </div>
                 <Loading loading={loading}>
