@@ -41,9 +41,19 @@ export default class home extends Component {
         this.setState({
             loading: true,
         });
-
+        let getUrl;
+        let url = document.location.href;
+        let name = url.match(/(?<=\/\/).*(?=\.github)/);
+        name = name && name.length ? name[0] : null;
+        if (name) {
+            getUrl = 'https://api.github.com/repos/' + name + '/chrome-bookmark/contents/docs/chrome-bookmark.json?ref=master';
+            console.log('getUrl:', getUrl);
+        } else {
+            getUrl = 'https://api.github.com/repos/liqiang-xxfy/chrome-bookmark/contents/docs/chrome-bookmark.json?ref=master';
+            console.log('localUrl:', getUrl);
+        }
         axios
-            .get('https://api.github.com/repos/liqiang-xxfy/chrome-bookmark/contents/docs/chrome-bookmark.json?ref=master')
+            .get(getUrl)
             // .get('@/../public/chrome-bookmark.json')
             .then(resp => {
                 if (resp.status === 200) {
