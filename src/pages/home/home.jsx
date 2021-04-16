@@ -17,19 +17,31 @@ export default class home extends Component {
         };
     }
     componentDidMount() {
-        this.getData();
+        this.getLocalData();
     }
-
     openUrl = params => {
         if (!params.url) return;
         window.open(params.url, '_blank');
     };
+    getLocalData = () => {
+        import('@/assets/chrome-bookmark.json')
+            .then(data => {
+                let { default: arrs } = data;
+                this.setState({
+                    data: arrs,
+                });
+            })
+            .catch(error => {
+                console.log('error:', error);
+            });
+    };
 
-    getData = () => {
+    getUrlData = () => {
         if (this.state.loading) return;
         this.setState({
             loading: true,
         });
+
         axios
             .get('https://api.github.com/repos/liqiang-xxfy/chrome-bookmark/contents/docs/chrome-bookmark.json?ref=master')
             // .get('@/../public/chrome-bookmark.json')
@@ -66,7 +78,7 @@ export default class home extends Component {
             <div className="home">
                 <div className="search">
                     <Input placeholder="输入关键字进行过滤" onChange={text => this.tree.filter(text)} />
-                    <Button onClick={this.getData}>更新</Button>
+                    <Button onClick={this.getLocalData}>更新</Button>
                     <Button onClick={this.delete}>删除</Button>
                 </div>
                 <Loading loading={loading}>
